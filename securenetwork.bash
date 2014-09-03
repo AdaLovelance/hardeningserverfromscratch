@@ -8,7 +8,7 @@
 echo
 
 echo    '###############################################################################################'
-echo    '#                                 Server Users Activity Record 			       #'
+echo    '#                                 Server Harden Network        			       #'
 echo    '# Securizo la parte de la red, el acceso a su de los usuariaros y prevengo arp poisoning      #'
 echo    '#					   BY  K&M	                                       #'
 echo -e '############################################################################################### \n'
