@@ -1,7 +1,18 @@
 #!/bin/bash
 
+#Este script está bajo licencia GPL y se distribuye sin garantías, copia, modifica y haz lo que quieras con él.
+#Este script securiza la parte de la red, el acceso a su de los usuariaros y prevengo arp poisoning
+#Creado en Ubuntu 14.04
+#Creado por Kao y M 2/09/2014
 
+echo
 
+echo    '###############################################################################################'
+echo    '#                                 Server Users Activity Record 			       #'
+echo    '# Securizo la parte de la red, el acceso a su de los usuariaros y prevengo arp poisoning      #'
+echo    '#					   BY  K&M	                                       #'
+echo -e '############################################################################################### \n'
+echo
 echo -e "Este script securizará la red de tu servidor, puedes ver la copia \n"
 echo -e "de los ficheros modificados en /root/backupf"
 
@@ -55,7 +66,7 @@ echo "Hecho"
 echo "Previniendo Ip Spoofing"
 sleep 2
 
-cp /etc/host /root/backupf
+cp /etc/hosts /root/backupf
 cat >> /etc/hosts.conf <<EOF
 order bind,hosts
 nospoof on
@@ -64,16 +75,28 @@ EOF
 echo "Hecho"
 echo "Eliminando la versión del dns"
 sleep 2
-cp /etc/bind/named.conf.options /root/bakupfs
-grep -q version "Not Disclosed"; /etc/bind/named.conf.options 2> /dev/null || sed -i '$ i\version "Not Disclosed";\n' /etc/bind/named.conf.options 
+cp /etc/bind/named.conf.options /root/backupf
+sed -i '$ i\version "Not Disclosed";\n' /etc/bind/named.conf.options
 
-#Solo los usuarios del grupo de root tienen acceso a sudo
+#Solo los usuarios del grupo de root tienen acceso a sudo,
+echo "Securizando usuarios"
 dpkg-statoverride --update --add root sudo 4750 /bin/su
+
+groupadd admin
+read -p "¿Cuantos usuarios deben tener aceso a sudo y/o a root?, el resto serán denegados: " users
+
+for (( i=1; i<=$users; i++ ))
+do
+        read -p "Introduce el nombre del usuario $1: " user
+	usermod -g admin $user
+done
+
 
 #ARP Whatch
 echo -e "Ahora se instalará arp wach para avisarnos cuando se conecta una nueva mac a nuestra red/n"
 echo "Esto evita ataques de envenenamiento de rutas arp"
 sleep 2
+
 aptitude update
 aptitude install arpwatch
 
@@ -99,3 +122,4 @@ do
 done
 
 /etc/init.d/arpwatch start
+
