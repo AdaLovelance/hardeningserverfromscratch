@@ -1,15 +1,16 @@
 #!/bin/bash
 
 #Este script está bajo licencia GPL y se distribuye sin garantías, copia, modifica y haz lo que quieras con él.
-#Este script configura los requisitos mínimos de seguridad de un servidor SSH, creado en Ubuntu 14.04
+#Este script graba la actividad de la shell de los usuarios y la guarda en formato .rec en un directorio oculto
+#Creado en Ubuntu 14.04
 #Creado por Kao y M 2/09/2014
 
 echo
 
 echo    '###############################################################################################'
-echo    '#                                 Server Users Activity Record 			       #'
+echo    '#                                 Server Users Activity Record 			                         #'
 echo    '# Grabo lo que hacen los usuarios en la shell y lo guardo en un directorio oculto en /opt     #'
-echo    '#					      BY  K&M					       #'
+echo    '#					                                 BY  K&M		                        			         #'
 echo -e '############################################################################################### \n'
 
 aptitude install ttyrec
