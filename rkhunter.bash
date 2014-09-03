@@ -13,10 +13,7 @@ echo    '#                            Configuro Rkhunter y Chkrootkit           
 echo    '#					   BY  K&M	                                       #'
 echo -e '############################################################################################### \n'
 echo
-echo -e "Este script securizará tu servidor, puedes ver la copia \n"
-echo -e "de los ficheros modificados en /root/backupf"
 sleep 3
-mkdir /root/backupf
 
 aptitude update && aptitude install rkhunter chkrootkit
 echo "Rkhunter instalado ahora se actulizará, esto puede tardar unos minutos, no corte el script."
@@ -27,10 +24,17 @@ mv /etc/cron.weekly/rkhunter /etc/cron.weekly/rkhunter_update
 mv /etc/cron.daily/rkhunter /etc/cron.weekly/rkhunter_run
 mv /etc/cron.daily/chkrootkit /etc/cron.weekly/
 
-read -p  "¿Desea scanear ahora su sistema? (s/n): " respuesta
+read -p  "¿Desea scanear ahora su sistema con rkhunter? (s/n): " respuesta
 
 if [ $respuesta = "s" ]
 then
 rkhunter -c
+fi
+
+read -p  "¿Desea scanear ahora su sistema con chkrootkit? (Recomendado),(s/n): " respuesta
+
+if [ $respuesta = "s" ]
+then
+chkrootkit -x
 fi
 
