@@ -39,7 +39,7 @@ aptitude install apache2 libapache2-modsecurity libapache2-mod-php5 apache2-util
 #cuyo index no ha sido dado
 # - status: te ofrece un pequeños servidor de monitoreo de la página que visitas
 a2dismod status
-asdismod autoindex
+a2dismod autoindex
 a2enmod headers
 #copiamos la configuración de apache por defecto y ahora la modificaremos
 cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.original
