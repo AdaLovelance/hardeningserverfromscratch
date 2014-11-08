@@ -91,7 +91,7 @@ a2enmod headers
 a2enmod security2
 
 
->>COMMENT
+<<COMMENT
 si aparece este error al reiniciar:
 /usr/sbin/apache2ctl: 87: ulimit: error setting limit (Operation not permitted)
 abrimos el fichero /etc/security/limits.conf y añadimos las siguientes líneas:
