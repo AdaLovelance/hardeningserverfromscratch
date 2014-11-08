@@ -104,7 +104,7 @@ aptitude install libapache2-mod-evasive
 mkdir /var/log/mod_evasive
 chown www-data:www-data /var/log/mod_evasive
 
-echo -p "Introduce la dirección de correo donde deseas que te lleguen las alertas en caso de ddos" correo
+read -p "Introduce la dirección de correo donde deseas que te lleguen las alertas en caso de ddos: " correo
 
 cat >/etc/apache2/mods-available/evasive.conf<<EOF
 
