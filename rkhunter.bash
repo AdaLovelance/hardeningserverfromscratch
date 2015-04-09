@@ -18,7 +18,7 @@ sleep 3
 aptitude update && aptitude install rkhunter chkrootkit
 echo "Rkhunter instalado ahora se actulizará, esto puede tardar unos minutos, no corte el script."
 rkhunter --update
-rkhunter -c --createlogfile rkhunter.lo
+rkhunter -c --createlogfile rkhunter.log
 
 mv /etc/cron.weekly/rkhunter /etc/cron.weekly/rkhunter_update
 mv /etc/cron.daily/rkhunter /etc/cron.weekly/rkhunter_run
